@@ -1,4 +1,4 @@
-package com.example.Capstone1v2;
+package com.example.Capstone1v2.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -14,7 +14,7 @@ public class config {
         return new OpenAPI()
                 .info(new Info()
                         .title("API Documentation")
-                        .version("1.0")
+                        .version("1.1")
                         .description("API documentation for the Accounting Ledger")
                         .contact(new Contact().name("Group 3").email("Group3@yearup.com"))
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
