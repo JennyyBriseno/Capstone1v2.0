@@ -1,6 +1,8 @@
 package com.example.Capstone1v2.services;
 
 import com.example.Capstone1v2.exceptions.ResourceNotFoundException;
+import com.example.Capstone1v2.models.TransactionSearchParams;
+import com.example.Capstone1v2.models.TransactionSpecification;
 import com.example.Capstone1v2.models.Transactions;
 import org.springframework.data.jpa.domain.Specification;
 import com.example.Capstone1v2.repositories.TransactionRepository;
@@ -9,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static org.springframework.data.jpa.domain.Specification.where;
 
 @Service
 public class TransactionService {
@@ -64,7 +68,11 @@ public class TransactionService {
     }
 
     //custom search
-    public List<Transactions> searchTransactions(){
-        throw new UnsupportedOperationException();
+    public List<Transactions> searchTransactions(TransactionSearchParams tsp){
+        Specification<Transactions> spec = where(TransactionSpecification.dateBetween(tsp.getStartDate(), tsp.getEndDate()))
+                .and(TransactionSpecification.descriptionContains(tsp.getDescription()))
+                .and(TransactionSpecification.vendorContains(tsp.getVendor()))
+                .and(TransactionSpecification.amountBetween(tsp.getMinAmount(), tsp.getMaxAmount()));
+        return transactionRepository.findAll(spec);
     }
 }
