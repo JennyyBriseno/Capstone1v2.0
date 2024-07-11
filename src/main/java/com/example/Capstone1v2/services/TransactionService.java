@@ -11,15 +11,12 @@ public class TransactionService {
     public List<Transactions> getAllTransactions(){
         throw new UnsupportedOperationException();
     }
-    public List<Transactions> displayAllDeposits(){
-        throw new UnsupportedOperationException();
-    }
-
-    public List<Transactions> displayAllPayments(){
-        throw new UnsupportedOperationException();
-    }
 
     public Transactions displayById(){
+        throw new UnsupportedOperationException();
+    }
+
+    public Transactions createTransaction(){
         throw new UnsupportedOperationException();
     }
 
@@ -39,7 +36,20 @@ public class TransactionService {
         throw new UnsupportedOperationException();
     }
 
+    public List<Transactions> displayAllDeposits(){
+        throw new UnsupportedOperationException();
+    }
+
     public List<Transactions> displayByVendor(){
+        throw new UnsupportedOperationException();
+    }
+
+    public List<Transactions> displayAllPayments(){
+        throw new UnsupportedOperationException();
+    }
+
+    //custom search
+    public List<Transactions> searchTransactions(){
         throw new UnsupportedOperationException();
     }
 }
