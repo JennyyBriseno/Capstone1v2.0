@@ -6,13 +6,15 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transactions, Long>, JpaSpecificationExecutor<Transactions> {
 
-    List<Transactions> findByDateBetween(String startDate, String endDate);
+    List<Transactions> findByDateBetween(LocalDate startDate, LocalDate endDate);
 
     List<Transactions> findByDescriptionIgnoreCase(String description);
 
