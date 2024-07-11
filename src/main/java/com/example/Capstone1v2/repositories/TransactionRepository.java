@@ -18,4 +18,8 @@ public interface TransactionRepository extends JpaRepository<Transactions, Long>
 
     List<Transactions> findByAmountBetween(BigDecimal start, BigDecimal end);
 
+    List<Transactions> findByAmountGreaterThanZero();
+
+    List<Transactions> findByAmountLessThanZero();
+
 }
