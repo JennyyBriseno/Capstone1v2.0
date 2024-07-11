@@ -2,6 +2,7 @@ package com.example.Capstone1v2.services;
 
 import com.example.Capstone1v2.exceptions.ResourceNotFoundException;
 import com.example.Capstone1v2.models.Transactions;
+import org.springframework.data.jpa.domain.Specification;
 import com.example.Capstone1v2.repositories.TransactionRepository;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
