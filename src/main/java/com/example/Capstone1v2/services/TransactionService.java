@@ -1,6 +1,10 @@
 package com.example.Capstone1v2.services;
 
+import com.example.Capstone1v2.exceptions.ResourceNotFoundException;
 import com.example.Capstone1v2.models.Transactions;
+import com.example.Capstone1v2.repositories.TransactionRepository;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,16 +12,26 @@ import java.util.List;
 @Service
 public class TransactionService {
 
+    @Autowired
+    TransactionRepository transactionRepository;
+
     public List<Transactions> getAllTransactions(){
-        throw new UnsupportedOperationException();
+        List<Transactions> transactions = transactionRepository.findAll();
+        return transactions;
     }
 
-    public Transactions displayById(){
-        throw new UnsupportedOperationException();
+    public Transactions displayById(Long id){
+        Transactions transactions = transactionRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Transaction was not found, try again!" + id));
+
+        return transactions;
     }
 
-    public Transactions createTransaction(){
-        throw new UnsupportedOperationException();
+    public Transactions createTransaction(Transactions createTransaction){
+        Transactions createdTransaction = createTransaction;
+        Transactions savedTransaction = transactionRepository.save(createdTransaction);
+
+        return savedTransaction;
     }
 
     public List<Transactions> displayMonthToDate(){
