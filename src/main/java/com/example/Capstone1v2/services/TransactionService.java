@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -83,7 +84,7 @@ public class TransactionService {
     }
 
     public List<Transactions> displayAllDeposits(){
-        List<Transactions> deposits = transactionRepository.findByAmountGreaterThanZero();
+        List<Transactions> deposits = transactionRepository.findByAmountGreaterThan(BigDecimal.ZERO);
 
         return deposits;
     }
@@ -95,7 +96,7 @@ public class TransactionService {
     }
 
     public List<Transactions> displayAllPayments(){
-        List<Transactions> payments = transactionRepository.findByAmountLessThanZero();
+        List<Transactions> payments = transactionRepository.findByAmountLessThan(BigDecimal.ZERO);
 
         return payments;
     }

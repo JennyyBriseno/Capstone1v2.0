@@ -9,5 +9,4 @@ public class Capstone1v2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Capstone1v2Application.class, args);
 	}
-
 }
