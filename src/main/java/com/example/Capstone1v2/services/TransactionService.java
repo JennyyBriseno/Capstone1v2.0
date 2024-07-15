@@ -57,7 +57,7 @@ public class TransactionService {
     public List<Transactions> displayPreviousMonth(){
         LocalDate currentDate = LocalDate.now();
         LocalDate lastMonthStartDate = LocalDate.now().minusMonths(1).minusDays(currentDate.getDayOfMonth() - 1);
-        LocalDate endDate = LocalDate.now().minusDays(currentDate.getDayOfMonth() - 1);
+        LocalDate endDate = LocalDate.now().minusDays(currentDate.getDayOfMonth() + 1);
 
         List<Transactions> transactions = transactionRepository.findByDateBetween(lastMonthStartDate, endDate);
 
