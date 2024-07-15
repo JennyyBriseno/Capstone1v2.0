@@ -22,8 +22,8 @@ public interface TransactionRepository extends JpaRepository<Transactions, Long>
 
     List<Transactions> findByAmountBetween(BigDecimal start, BigDecimal end);
 
-    List<Transactions> findByAmountGreaterThanZero();
+    List<Transactions> findByAmountGreaterThan(BigDecimal zero);
 
-    List<Transactions> findByAmountLessThanZero();
+    List<Transactions> findByAmountLessThan(BigDecimal zero);
 
 }
