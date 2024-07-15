@@ -2,7 +2,6 @@ package com.example.Capstone1v2.controllers;
 
 import com.example.Capstone1v2.models.Transactions;
 import com.example.Capstone1v2.services.TransactionService;
-import jakarta.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +29,18 @@ public class TransactionController {
     }
 
     @GetMapping("/deposits")
-    public ResponseEntity<Transactions> getDeposits(){
-        return new ResponseEntity<>(transactionService.displayAllDeposits());
+    public ResponseEntity<List<Transactions>> getDeposits(){
+        return new ResponseEntity<>(transactionService.displayAllDeposits(), HttpStatus.OK);
     }
 
     @GetMapping("/payments")
-    public ResponseEntity<Transactions> getPayments(){
-        return new ResponseEntity<>(transactionService.displayAllPayments());
+    public ResponseEntity<List<Transactions>> getPayments(){
+        return new ResponseEntity<>(transactionService.displayAllPayments(), HttpStatus.OK);
+    }
+
+    @GetMapping("/vendor")
+    public ResponseEntity<List<Transactions>> getByVendor(@PathVariable String vendor){
+        return new ResponseEntity<>(transactionService.displayByVendor(vendor), HttpStatus.OK);
     }
 
 }
