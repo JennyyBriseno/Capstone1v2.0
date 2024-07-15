@@ -3,17 +3,18 @@ package com.example.Capstone1v2.models;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class TransactionSpecification {
-    public static Specification<Transactions> dateBetween(String start, String end) {
+    public static Specification<Transactions> dateBetween(LocalDate start, LocalDate end) {
         return (root, query, criteriaBuilder) -> {
-            if ((start == null || start.isEmpty()) && (end == null || end.isEmpty())) {
+            if (start == null && end == null) {
                 return criteriaBuilder.conjunction();
             }
-            if (start == null || start.isEmpty()) {
+            if (start == null) {
                 return criteriaBuilder.lessThanOrEqualTo(root.get("date"), end);
             }
-            if (end == null || end.isEmpty()) {
+            if (end == null) {
                 return criteriaBuilder.greaterThanOrEqualTo(root.get("date"), start);
             }
             return criteriaBuilder.between(root.get("date"), start, end);
