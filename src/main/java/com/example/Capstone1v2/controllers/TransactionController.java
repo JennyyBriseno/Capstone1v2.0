@@ -38,7 +38,7 @@ public class TransactionController {
         return new ResponseEntity<>(transactionService.displayAllPayments(), HttpStatus.OK);
     }
 
-    @GetMapping("/vendor")
+    @GetMapping("/vendor/{vendor}")
     public ResponseEntity<List<Transactions>> getByVendor(@PathVariable String vendor){
         return new ResponseEntity<>(transactionService.displayByVendor(vendor), HttpStatus.OK);
     }
