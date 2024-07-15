@@ -29,18 +29,18 @@ public class TransactionController {
     }
 
     @GetMapping("/deposits")
-    public ResponseEntity<Transactions> getDeposits(){
-        return new ResponseEntity<>(transactionService.displayAllDeposits());
+    public ResponseEntity<List<Transactions>> getDeposits(){
+        return new ResponseEntity<>(transactionService.displayAllDeposits(), HttpStatus.OK);
     }
 
     @GetMapping("/payments")
-    public ResponseEntity<Transactions> getPayments(){
-        return new ResponseEntity<>(transactionService.displayAllPayments());
+    public ResponseEntity<List<Transactions>> getPayments(){
+        return new ResponseEntity<>(transactionService.displayAllPayments(), HttpStatus.OK);
     }
 
     @GetMapping("/vendor")
-    public ResponseEntity<Transactions> getByVendor(@PathVariable String vendor){
-        return new ResponseEntity<>(transactionService.displayByVendor(vendor));
+    public ResponseEntity<List<Transactions>> getByVendor(@PathVariable String vendor){
+        return new ResponseEntity<>(transactionService.displayByVendor(vendor), HttpStatus.OK);
     }
 
 }
