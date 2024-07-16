@@ -16,11 +16,7 @@ public interface TransactionRepository extends JpaRepository<Transactions, Long>
 
     List<Transactions> findByDateBetween(LocalDate startDate, LocalDate endDate);
 
-    List<Transactions> findByDescriptionIgnoreCase(String description);
-
     List<Transactions> findByVendorIgnoreCase(String vendor);
-
-    List<Transactions> findByAmountBetween(BigDecimal start, BigDecimal end);
 
     List<Transactions> findByAmountGreaterThan(BigDecimal zero);
 
